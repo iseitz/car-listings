@@ -1,0 +1,9 @@
+<%= form_tag searches_path, method: :get do %>
+
+  Manufacturer <%= select_tag 'manufacturer', options_for_select(@manufacturers.insert(0, "")) %>
+  Color <%= select_tag 'color', options_for_select(@colors.insert(0, "")) %>
+  Year <%= select_tag 'year', options_for_select(@years.insert(0, "")) %>
+  Max Mileage <%= select_tag :mileage, options_for_select(@mileages.insert(0, "")) %>
+
+  <%= submit_tag "Search", name: 'search[search_form]' %>
+<% end %>

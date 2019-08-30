@@ -1,0 +1,32 @@
+<% if @car.errors.any? %>
+  <% @car.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+  <% end %>
+<% end %>
+<h1><%= @car.name %></h1>
+<table>
+  <theader>
+    <th> Color </th>
+    <th> Year </th>
+    <th> Mileage </th>
+    <th> Description </th>
+    <th> Manufacturer </th>
+    <th> Condition</th>
+  </theader>
+  <tbody>
+    <tr>
+      <td> <%= @car.color %></td>
+      <td> <%= @car.year %></td>
+      <td> <%= @car.mileage %></td>
+      <td> <%= @car.description %></td>
+      <td> <%= @manufacturer.name %></td>
+      <% @car_condition = @car.condition(@car.year, @car.mileage) %>
+      <td><%= @car_condition %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to "Back To All Cars", cars_path, class: "active" %></br>
+<%= link_to "See All Manufacturers", manufacturers_path, class: "active" %></br>
+<%= link_to "Create New Car", new_car_path, class: "active" %></br>
+<%= link_to "Create New Manufacturer", new_manufacturer_path, class: "active" %>

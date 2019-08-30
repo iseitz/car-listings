@@ -1,0 +1,36 @@
+<h1> All cars </h1>
+
+    <div class="div">
+      <table>
+        <theader>
+          <th> Name </th>
+          <th> Manufacturer </th>
+          <th> Color </th>
+          <th> Year </th>
+          <th> Mileage </th>
+          <th> Description </th>
+          <th> Condition </th>
+        </theader>
+        <tbody>
+          <% @cars = Car.all %>
+          <% @cars.each do |c| %>
+             <tr>
+              <td><%= link_to "#{c.name}", car_path(c) %></td>
+              <td><%= c.manufacturer.name %></td>
+              <td><%= c.color %></td>
+              <td><%= c.year %></td>
+              <td><%= c.mileage %></td>
+              <td><%= c.description %></td>
+              <% @car_condition = c.condition(c.year, c.mileage) %>
+              <td><%= @car_condition %></td>
+              </tr>
+            <% end %>
+        </tbody>
+      </table>
+    </div>
+
+<%= render "search_form", class: "active" %></br>
+
+<%= link_to "See All Manufacturers", manufacturers_path, class: "active" %></br>
+<%= link_to "Create New Car", new_car_path, class: "active" %></br>
+<%= link_to "Create New Manufacturer", new_manufacturer_path, class: "active" %>

@@ -1,0 +1,65 @@
+<h1> Search Results </h1>
+
+<% if @search.search_cars.empty? %>
+    <p>No Records Found Here Are All OF Our Cars:</p>
+    <div class="div">
+      <table>
+        <theader>
+          <th> Name </th>
+          <th> Manufacturer </th>
+          <th> Color </th>
+          <th> Year </th>
+          <th> Mileage </th>
+          <th> Description </th>
+          <th> Condition </th>
+        </theader>
+        <tbody>
+          <% @cars = Car.all %>
+          <% @cars.each do |c| %>
+             <tr>
+              <td><%= link_to "#{c.name}", car_path(c) %></td>
+              <td><%= c.manufacturer.name %></td>
+              <td><%= c.color %></td>
+              <td><%= c.year %></td>
+              <td><%= c.mileage %></td>
+              <td><%= c.description %></td>
+              <% @car_condition = c.condition(c.year, c.mileage) %>
+              <td><%= @car_condition %></td>
+              </tr>
+            <% end %>
+        </tbody>
+      </table>
+    </div>
+<% else %>
+    <br>
+    <div class="div">
+        <table>
+          <theader>
+            <th> Name </th>
+            <th> Manufacturer </th>
+            <th> Color </th>
+            <th> Year </th>
+            <th> Mileage </th>
+            <th> Description </th>
+            <th> Condition </th>
+          </theader>
+          <tbody>
+            <% @search.search_cars.each do |c| %>
+               <tr>
+                <td><%= link_to "#{c.name}", car_path(c) %></td>
+                <td><%= c.manufacturer.name %></td>
+                <td><%= c.color %></td>
+                <td><%= c.year %></td>
+                <td><%= c.mileage %></td>
+                <td><%= c.description %></td>
+                <% @car_condition = c.condition(c.year, c.mileage) %>
+                <td><%= @car_condition %></td>
+                </tr>
+              <% end %>
+          </tbody>
+        </table>
+      </div>
+<% end %>
+
+<%= link_to 'Back To Advaced Search', new_search_path %></br>
+<%= link_to 'Back To All Cars', cars_path %>

@@ -1,0 +1,13 @@
+<% if @manufacturer.errors.any? %>
+  <% @manufacturer.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+  <% end %>
+<% end %>
+<h1><%= @manufacturer.name %></h1>
+
+<%= @manufacturer.country %>
+
+<%= link_to "Back To All Manufacturers", manufacturers_path, class: "active" %></br>
+<%= link_to "See All Cars", cars_path, class: "active" %></br>
+<%= link_to "Create New Car", new_car_path, class: "active" %></br>
+<%= link_to "Create New Manufacturer", new_manufacturer_path, class: "active" %>

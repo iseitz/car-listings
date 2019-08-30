@@ -1,0 +1,10 @@
+<h1> Add New Manufacturer </h1>
+<% if @manufacturer.errors.any? %>
+  <% @manufacturer.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+  <% end %>
+<% end %>
+<%= render 'form', manufacturer: @manufacturer %>
+<%= link_to "See All Cars", cars_path, class: "active" %>
+<%= link_to "See All Manufacturers", manufacturers_path, class: "active" %>
+<%= link_to "Create New Car", new_car_path, class: "active" %>

@@ -1,0 +1,19 @@
+<h1> All manufacturers </h1>
+<table>
+  <theader>
+    <th> Name </th>
+    <th> Country </th>
+  </theader>
+  <tbody>
+    <% @manufacturers.each do |manufacturer| %>
+      <tr>
+        <td><%= manufacturer.name %></td>
+        <td><%= manufacturer.country %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+<%= link_to "See All Cars", cars_path, class: "active" %></br>
+<%= link_to "Create New Manufacturer", new_manufacturer_path, class: "active" %></br>
+<%= link_to "Create New Car", new_car_path, class: "active" %></br>

@@ -1,0 +1,7 @@
+<%=form_for @manufacturer do |f| %>
+<%=f.label :name %>
+<%=f.text_field :name %>
+<%=f.label :country %>
+<%=f.text_field :country %>
+<%=f.submit 'Create Manufacturer', class: 'btn-primary' %>
+<% end %>

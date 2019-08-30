@@ -1,0 +1,22 @@
+<%= form_for @search, html: {class: "pure-form"} do |s| %>
+  <div class="field">
+    <%= s.label :manufacturer %><br>
+    <%= s.select :manufacturer, options_for_select(@manufacturers), inlclude_blank: true %>
+  </div>
+  <div class="field">
+    <%= s.label :color %><br>
+    <%= s.select :color, options_for_select(@colors), inlclude_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= s.label :year %><br>
+    <%= s.select :year, options_for_select(@years), inlclude_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= s.label :mileage %><br>
+    <%= s.select :mileage, options_for_select(@mileages), inlclude_blank: true %>
+  </div>
+
+  <div class="actions" ><%= s.submit "Search", class: "pure-button pure-button-primary" %></div>
+<% end %>

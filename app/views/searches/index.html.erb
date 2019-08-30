@@ -1,0 +1,66 @@
+<h1> Search Results </h1>
+
+<% if @cars.empty? %>
+    <p>No Records Matching Search Criteria Found. Here Are All Of Our Cars:</p>
+    <div class="div">
+      <table>
+        <theader>
+          <th> Name </th>
+          <th> Manufacturer </th>
+          <th> Color </th>
+          <th> Year </th>
+          <th> Mileage </th>
+          <th> Description </th>
+          <th> Condition </th>
+        </theader>
+        <tbody>
+          <% @cars = Car.all %>
+          <% @cars.each do |c| %>
+             <tr>
+              <td><%= link_to "#{c.name}", car_path(c) %></td>
+              <td><%= c.manufacturer.name %></td>
+              <td><%= c.color %></td>
+              <td><%= c.year %></td>
+              <td><%= c.mileage %></td>
+              <td><%= c.description %></td>
+              <% @car_condition = c.condition(c.year, c.mileage) %>
+              <td><%= @car_condition %></td>
+              </tr>
+            <% end %>
+        </tbody>
+      </table>
+    </div>
+<% else %>
+    <div class="div">
+        <table>
+          <theader>
+            <th> Name </th>
+            <th> Manufacturer </th>
+            <th> Color </th>
+            <th> Year </th>
+            <th> Mileage </th>
+            <th> Description </th>
+            <th> Condition </th>
+          </theader>
+          <tbody>
+            <% @cars.each do |c| %>
+               <tr>
+                <td><%= link_to "#{c.name}", car_path(c) %></td>
+                <td><%= c.manufacturer.name %></td>
+                <td><%= c.color %></td>
+                <td><%= c.year %></td>
+                <td><%= c.mileage %></td>
+                <td><%= c.description %></td>
+                <% @car_condition = c.condition(c.year, c.mileage) %>
+                <td><%= @car_condition %></td>
+                </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+<% end %>
+
+<%= link_to "Back To All Cars", cars_path, class: "active" %></br>
+<%= link_to "See All Manufacturers", manufacturers_path, class: "active" %></br>
+<%= link_to "Create New Car", new_car_path, class: "active" %></br>
+<%= link_to "Create New Manufacturer", new_manufacturer_path, class: "active" %>
