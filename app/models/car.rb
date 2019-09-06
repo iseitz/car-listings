@@ -9,13 +9,13 @@ class Car < ApplicationRecord
   validates :mileage, presence: true, numericality: { greater_than_or_equal_to: 0, message: 'must be greater than 0' }
 
   def condition(year, mileage)
-    if year > 2015 && mileage <= 900
+    if year >= 2016 && mileage <= 900
       'Excellent'
-    elsif year >= 2014 && mileage >= 900 && mileage < 1000 || year > 2015 && mileage > 900
+    elsif year == 2015 && mileage <= 900 || year >= 2016 && mileage > 900
       'Good'
-    elsif year >= 2012 && year < 2014 && mileage <= 1000 || year >= 2014 && mileage > 1000
+    elsif year >= 2011 && year <= 2014 && mileage <= 900 || year == 2015 && mileage > 900
       'Fair'
-    elsif year < 2012 && mileage >= 1000
+    elsif year >= 2011 && year <= 2014 && mileage > 900 || year < 2011
       'Poor'
     end
   end
